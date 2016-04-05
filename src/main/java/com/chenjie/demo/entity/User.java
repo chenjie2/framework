@@ -5,10 +5,11 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name="User")
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity(name="users")
 public class User implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -18,11 +19,14 @@ public class User implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+//    @GeneratedValue(generator = "system-uuid")   
+//    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    @GeneratedValue(generator = "uuid")   //指定生成器名称  
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name="id")
-    private Long id;
+    private String id;
     
-    @Column(name="name",length=32)
+    @Column(name="user_name",length=32)
     private String name;
     
     @Column(name="age")
@@ -37,11 +41,11 @@ public class User implements Serializable {
                 + ", nice_name=" + nice_name + "]";
     }
 
-    public final Long getId() {
+    public final String getId() {
         return id;
     }
 
-    public final void setId(Long id) {
+    public final void setId(String id) {
         this.id = id;
     }
 

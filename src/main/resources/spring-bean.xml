@@ -14,14 +14,6 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
         ">
-
-    <bean id="springContextUtils" class="com.chenjie.demo.util.SpringContextUtils"></bean>
-    <!-- 启动自动扫描该包下所有的Bean(例如@Controller) -->
-    <context:component-scan base-package="com.chenjie.demo" />
-    
-    <!-- 基于注释的事务，当注释中发现@Transactional时，使用id为“transactionManager”的事务管理器  -->
-    <!-- 如果没有设置transaction-manager的值，则spring以缺省默认的事务管理器来处理事务，默认事务管理器为第一个加载的事务管理器 -->
-    <tx:annotation-driven transaction-manager="transactionManager"/>
     
    
 </beans>
